@@ -1,0 +1,120 @@
+html{
+    scroll-behavior: smooth;
+}
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.box{
+    width: 100%;
+}
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding:10px 0px;
+    text-align: center;
+    background-color: #444;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+section {
+    padding: 20px;
+    margin: 10px auto;
+    width: 80%;
+    background-color: white;
+    border-radius: 8px;
+}
+.course{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+section img{
+    width: 60%;
+    margin: 30px 0px;
+}
+
+nav ul li a {
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+    position: relative; /* Required for the pseudo-element positioning */
+}
+
+a::before {
+    position: absolute; /* Change to absolute for better positioning */
+    bottom: -5px; /* Adjust this value to position the line */
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transition: width 0.5s, left 0.5s; /* Smooth transition for width and position */
+    width: 0; /* Start with 0 width */
+}
+
+a:hover::before {
+    width: 100%; /* Expand to full width on hover */
+    left: 0; /* Ensure it starts from the left */
+}
+/* style.css */
+
+/* Button Styles */
+button {
+    background-color: #4CAF50; /* Green background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 15px 32px; /* Top and bottom padding, left and right padding */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Inline-block display */
+    font-size: 16px; /* Font size */
+    margin: 5px 2px;
+    margin-top: 40px; /* Margin around the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 8px; /* Rounded corners */
+    transition: background-color 0.3s, transform 0.2s; /* Transition effects */
+  }
+  
+  button:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+  }
+  
+  button:focus {
+    outline: none; /* Remove outline when focused */
+  }
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #333;
+    color: white;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    section {
+        width: 90%;
+    }
+}
