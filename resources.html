@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online Courses Resources</title>
+  <title>JavaScript Course Resources</title>
   <style>
     /* Basic Reset */
     * {
@@ -14,63 +14,27 @@
 
     body {
       font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
       display: flex;
       justify-content: center;
-      background-color: #f9f9f9;
+      align-items: center;
+      min-height: 100vh;
     }
 
     .container {
-      display: flex;
       width: 90%;
-      max-width: 1200px;
-      margin-top: 20px;
-    }
-
-    /* Sidebar Styles */
-    .sidebar {
-      width: 250px;
-      background-color: #333;
-      color: #fff;
-      padding: 15px;
-      border-radius: 8px;
-    }
-
-    .sidebar h2 {
-      margin-bottom: 15px;
-      font-size: 1.2em;
-    }
-
-    .sidebar ul {
-      list-style: none;
-    }
-
-    .sidebar ul li {
-      margin: 10px 0;
-    }
-
-    .sidebar ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1em;
-      transition: color 0.3s;
-    }
-
-    .sidebar ul li a:hover {
-      color: #ddd;
-    }
-
-    /* Main Content Styles */
-    .content {
-      flex-grow: 1;
+      max-width: 800px;
       padding: 20px;
-      margin-left: 20px;
       background-color: #fff;
       border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    .content h2 {
-      font-size: 1.5em;
+    h1 {
+      font-size: 2em;
       margin-bottom: 20px;
+      text-align: center;
+      color: #333;
     }
 
     .resource {
@@ -113,36 +77,41 @@
 </head>
 <body>
   <div class="container">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <h2>Categories</h2>
-      <ul>
-        <li><a href="#courses">Courses</a></li>
-        <li><a href="#tutorials">Tutorials</a></li>
-        <li><a href="#resources">Resources</a></li>
-        <li><a href="#documentation">Documentation</a></li>
-        <li><a href="#community">Community</a></li>
-        <li><a href="#support">Support</a></li>
-      </ul>
-    </aside>
+    <h1>JavaScript Course Resources</h1>
+    
+    <!-- Resource 1 -->
+    <div class="resource">
+      <h3>JavaScript Basics</h3>
+      <p>Get started with JavaScript, covering variables, data types, functions, and control structures.</p>
+      <button onclick="viewMore('JavaScript Basics')">View More</button>
+    </div>
+    
+    <!-- Resource 2 -->
+    <div class="resource">
+      <h3>Advanced JavaScript</h3>
+      <p>Dive into closures, asynchronous JavaScript, and the event loop for in-depth JavaScript knowledge.</p>
+      <button onclick="viewMore('Advanced JavaScript')">View More</button>
+    </div>
+    
+    <!-- Resource 3 -->
+    <div class="resource">
+      <h3>JavaScript DOM Manipulation</h3>
+      <p>Learn how to manipulate HTML and CSS with JavaScript to create dynamic and interactive web pages.</p>
+      <button onclick="viewMore('JavaScript DOM Manipulation')">View More</button>
+    </div>
 
-    <!-- Main Content -->
-    <main class="content">
-      <section id="courses">
-        <h2>Courses</h2>
-        <div class="resource">
-          <h3>JavaScript Essentials</h3>
-          <p>Learn the basics of JavaScript, including syntax, operators, and functions.</p>
-          <button>View More</button>
-        </div>
-        <div class="resource">
-          <h3>Advanced CSS Techniques</h3>
-          <p>Explore advanced CSS features for modern web design.</p>
-          <button>View More</button>
-        </div>
-        <!-- Additional resources go here -->
-      </section>
-    </main>
+    <!-- Resource 4 -->
+    <div class="resource">
+      <h3>JavaScript ES6 and Beyond</h3>
+      <p>Explore new JavaScript features, including arrow functions, destructuring, classes, and modules.</p>
+      <button onclick="viewMore('JavaScript ES6 and Beyond')">View More</button>
+    </div>
   </div>
+
+  <script>
+    function viewMore(courseName) {
+      alert("You clicked to view more about " + courseName);
+    }
+  </script>
 </body>
 </html>
