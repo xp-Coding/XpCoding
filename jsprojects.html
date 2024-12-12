@@ -156,9 +156,10 @@ button:hover {
 &lt;body&gt;
 &lt;h1&gt;Odd or Even Checker&lt;/h1&gt;
 &lt;p&gt;Enter a number or a comma-separated list of numbers:&lt;/p&gt;
-&lt;input type="text" id="numbersInput" placeholder="e.g., 2, 3, 5, 8"&gt;
+&lt;input type="text" id="numberInput" placeholder="e.g., 2, 3, 5, 8"&gt;
 &lt;br&gt;
 &lt;button onclick="checkNumber()"&gt;Check Odd or Even&lt;/button&gt;
+&lt;br&gt;
 &lt;div class="output" id="result"&gt;&lt;/div&gt;
 &lt;script src="script.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
@@ -169,11 +170,13 @@ button:hover {
           javascript: `
 function checkNumber() {
     const number = document.getElementById('numberInput').value;
-    const resultElement = document.getElementById('result');
-    
-    if (number % 2 === 0) {
+    const resultElement = document.getElementById('result');    
+    if (!number) {
+        resultElement.textContent = 'Enter a valid number';
+    } else if(number % 2 === 0){
         resultElement.textContent = number + ' is an Even number';
-    } else {
+    }
+     else {
         resultElement.textContent = number + ' is an Odd number';
     }
 }
