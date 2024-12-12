@@ -254,7 +254,10 @@ function checkGuess() {
     if (attempts < maxAttempts) {
         attempts++;
         
-        if (userGuess === targetNumber) {
+        if (!userGuess || userGuess < 1 || userGuess > 20) {
+            messageElement.textContent = 'Enter a valid number between 1 and 20';
+        }
+        else if (userGuess === targetNumber) {
             messageElement.textContent = 'Congratulations! You guessed the number in ' + attempts + ' attempts';
             setTimeout(resetGame, 5000);
         } else if (userGuess < targetNumber) {
@@ -273,8 +276,7 @@ function resetGame() {
     attempts = 0;
     document.getElementById('guessInput').value = '';
     document.getElementById('message').textContent = 'Guess a number between 1 and 20';
-}
-                `,
+}                `,
         },
       };
 
