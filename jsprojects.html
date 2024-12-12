@@ -186,35 +186,93 @@ function checkNumber() {
           description: "Guess a random number game",
           html: `
 &lt;!DOCTYPE html&gt;
-&lt;html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Number Guessing Game&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        input {
+            padding: 10px;
+            width: 200px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        .score {
+            margin-top: 10px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
 &lt;body&gt;
-    &lt;h2&gt;Number Guessing Game&lt;/h2&gt;
-    &lt;input type="number" id="guessInput"&gt;
-    &lt;button onclick="checkGuess()"&gt;Guess&lt;/button&gt;
-    &lt;p id="message"&gt;&lt;/p&gt;
+    &lt;h1&gt;Number Guessing Game&lt;/h1&gt;
+    &lt;p&gt;Guess the number (between 1 and 20):&lt;/p&gt;
+    &lt;input type="number" id="guessInput" placeholder="Enter your guess"&gt;
+    &lt;br&gt;
+    &lt;button onclick="checkGuess()"&gt;Submit Guess&lt;/button&gt;
+    &lt;div class="message" id="message"&gt;&lt;/div&gt;
+    &lt;div class="score" id="score"&gt;&lt;/div&gt;
+
+    &lt;script src="script.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
                 `,
           javascript: `
-let targetNumber = Math.floor(Math.random() * 100) + 1;
 let attempts = 0;
+let maxAttempts = 10;
+let targetNumber;
+
+function generateTargetNumber() {
+    targetNumber = Math.floor(Math.random() * 20) + 1;
+    console.log(targetNumber);
+}
+
+generateTargetNumber();
 
 function checkGuess() {
     const guessInput = document.getElementById('guessInput');
     const messageElement = document.getElementById('message');
     const userGuess = parseInt(guessInput.value);
     
-    attempts++;
-    
-    if (userGuess === targetNumber) {
-        messageElement.textContent = 'Congratulations! You guessed the number in ' + attempts + ' attempts';
-        targetNumber = Math.floor(Math.random() * 100) + 1;
-        attempts = 0;
-    } else if (userGuess < targetNumber) {
-        messageElement.textContent = 'Too low! Try again.';
+    if (attempts < maxAttempts) {
+        attempts++;
+        
+        if (userGuess === targetNumber) {
+            messageElement.textContent = 'Congratulations! You guessed the number in ' + attempts + ' attempts';
+            setTimeout(resetGame, 5000);
+        } else if (userGuess < targetNumber) {
+            messageElement.textContent = 'Too low! Try again. Attempts remaining: ' + (maxAttempts - attempts);
+        } else {
+            messageElement.textContent = 'Too high! Try again. Attempts remaining: ' + (maxAttempts - attempts);
+        }
     } else {
-        messageElement.textContent = 'Too high! Try again.';
+        messageElement.textContent = 'Game over! The number was ' + targetNumber;
+        setTimeout(resetGame, 5000);
     }
+}
+
+function resetGame() {
+    generateTargetNumber();
+    attempts = 0;
+    document.getElementById('guessInput').value = '';
+    document.getElementById('message').textContent = 'Guess a number between 1 and 20';
 }
                 `,
         },
