@@ -292,95 +292,80 @@ function resetGame() {
         palindrome: {
           description: `Input Validation: The function retrieves the value of the input field using document.getElementById("inputText").value. It checks if the input is empty or contains only spaces, and if so, displays an error message in the messageDiv and exits the function. Sanitization: The input text is sanitized by removing spaces and special characters using a regular expression (/[^a-zA-Z0-9]/g) and converting the result to lowercase with .toLowerCase().Reversal: The sanitized text is reversed by converting it into an array with .split(""), reversing the array with .reverse(), and converting it back to a string using .join(""). Comparison: The function compares the sanitized text with its reversed version. If they are identical, it displays a success message stating the input is a palindrome; otherwise, it shows a failure message.Reset: The function clears the input field by setting document.getElementById("inputText").value to an empty string, preparing the form for the next input.`,
           html: `
-&lt;!DOCTYPE html&gt;
+               &lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-  &lt;title&gt;Fibonacci Generator&lt;/title&gt;
-  &lt;style&gt;
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f9;
-      color: #333;
-    }
-
-    .container {
-      max-width: 500px;
-      margin: 50px auto;
-      background: white;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-    }
-
-    input[type="number"] {
-      padding: 10px;
-      width: 80%;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    button {
-      padding: 10px 20px;
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-
-    .output {
-      margin-top: 20px;
-      padding: 10px;
-      background-color: #f9f9f9;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      word-wrap: break-word;
-    }
-  &lt;/style&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Palindrome Checker&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        input {
+            padding: 10px;
+            width: 300px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-  &lt;div class="container"&gt;
-    &lt;h1&gt;Fibonacci Sequence Generator&lt;/h1&gt;
-    &lt;p&gt;Enter the number of Fibonacci terms to generate:&lt;/p&gt;
-    &lt;input type="number" id="fibonacciCount" placeholder="Enter a positive number" min="1"&gt;
-    &lt;button onclick="generateFibonacci()"&gt;Generate&lt;/button&gt;
-    &lt;div id="output" class="output"&gt;&lt;/div&gt;
-  &lt;/div&gt;
+    &lt;h1&gt;Palindrome Checker&lt;/h1&gt;
+    &lt;p&gt;Enter a word or phrase to check if it's a palindrome:&lt;/p&gt;
+    &lt;input type="text" id="inputText" placeholder="Enter a word or phrase"&gt;
+    &lt;br&gt;
+    &lt;button onclick="checkPalindrome()"&gt;Check&lt;/button&gt;
+    &lt;div class="message" id="message"&gt;&lt;/div&gt;
 
-  &lt;script src="script.js"&gt;&lt;/script&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
-&lt;/html&gt;                
+&lt;/html&gt;
 
 `,
           javascript: `
-// Function to check if a string is a palindrome
-function generateFibonacci() {
-    const count = document.getElementById("fibonacciCount").value;
-    const outputDiv = document.getElementById("output");
+  // Function to check if a string is a palindrome
+function checkPalindrome() {
+    const inputText = document.getElementById("inputText").value;
+    const messageDiv = document.getElementById("message");
 
-    if (count <= 0 || isNaN(count)) {
-      outputDiv.textContent = "Please enter a valid positive number.";
-      return;
+    // Validate input
+    if (!inputText.trim()) {
+        messageDiv.textContent = "Please enter a word or phrase.";
+        return;
     }
 
-    const fibonacci = [0, 1];
-    for (let i = 2; i < count; i++) {
-      fibonacci.push(fibonacci[i - 1] + fibonacci[i - 2]);
+    // Remove spaces, special characters, and convert to lowercase
+    const cleanText = inputText.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+
+    // Reverse the string and compare with original
+    const reversedText = cleanText.split("").reverse().join("");
+
+    // Check if it's a palindrome
+    if (cleanText === reversedText) {
+        messageDiv.textContent = inputText + ' is a palindrome! 🎉';
+    } else {
+        messageDiv.textContent = inputText + ' is not a palindrome. ❌';
     }
 
-    outputDiv.textContent = outputDiv.textContent = "Fibonacci Sequence (first " + count + " terms): " + fibonacci.slice(0, count).join(", ");
-  }               
-  
+    // Clear the input field
+    document.getElementById("inputText").value = "";
+}
   `,
         },
 
@@ -485,6 +470,106 @@ function calculateResult() {
     }
 }                `,
         },
+
+
+
+        fibonacci: {
+          description: `The Below JavaScript functions provide functionality to append numbers or operators, clear the display, delete the last character, and calculate the result in a simple calculator interface. @param value - The value parameter in the appendToDisplay function represents the number or operator that you want to append to the display. It is the input that will be added to the current content of the display.`,
+          html: `
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Fibonacci Generator&lt;/title&gt;
+  &lt;style&gt;
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      width: 80%;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .output {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      word-wrap: break-word;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;h1&gt;Fibonacci Sequence Generator&lt;/h1&gt;
+    &lt;p&gt;Enter the number of Fibonacci terms to generate:&lt;/p&gt;
+    &lt;input type="number" id="fibonacciCount" placeholder="Enter a positive number" min="1"&gt;
+    &lt;button onclick="generateFibonacci()"&gt;Generate&lt;/button&gt;
+    &lt;div id="output" class="output"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt; 
+
+`,
+          javascript: `
+// Function to check if a string is a palindrome
+function generateFibonacci() {
+    const count = document.getElementById("fibonacciCount").value;
+    const outputDiv = document.getElementById("output");
+
+    if (count <= 0 || isNaN(count)) {
+      outputDiv.textContent = "Please enter a valid positive number.";
+      return;
+    }
+
+    const fibonacci = [0, 1];
+    for (let i = 2; i < count; i++) {
+      fibonacci.push(fibonacci[i - 1] + fibonacci[i - 2]);
+    }
+
+    outputDiv.textContent = outputDiv.textContent = "Fibonacci Sequence (first " + count + " terms): " + fibonacci.slice(0, count).join(", ");
+  }               
+
+               
+`,
+        },
+
+        
       };
 
       function createCopyButton(codeBlock) {
