@@ -548,6 +548,7 @@ function calculateResult() {
 `,
           javascript: `
 // Function to check if a string is a palindrome
+// Function to check if a string is a palindrome
 function generateFibonacci() {
     const count = document.getElementById("fibonacciCount").value;
     const outputDiv = document.getElementById("output");
@@ -559,12 +560,11 @@ function generateFibonacci() {
 
     const fibonacci = [0, 1];
     for (let i = 2; i < count; i++) {
-      fibonacci.push(fibonacci[i - 1] + fibonacci[i - 2]);
+      fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
     }
 
-    outputDiv.textContent = outputDiv.textContent = "Fibonacci Sequence (first " + count + " terms): " + fibonacci.slice(0, count).join(", ");
-  }               
-
+    outputDiv.textContent = outputDiv.textContent = "Fibonacci Sequence: " + fibonacci;
+  }
                
 `,
         },
