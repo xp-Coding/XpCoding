@@ -281,8 +281,13 @@ function resetGame() {
     attempts = 0;
     document.getElementById('guessInput').value = '';
     document.getElementById('message').textContent = 'Guess a number between 1 and 20';
-}                `,
+}               
+
+`,
         },
+
+
+      
 
         palindrome: {
           description: `Input Validation: The function retrieves the value of the input field using document.getElementById("inputText").value. It checks if the input is empty or contains only spaces, and if so, displays an error message in the messageDiv and exits the function. Sanitization: The input text is sanitized by removing spaces and special characters using a regular expression (/[^a-zA-Z0-9]/g) and converting the result to lowercase with .toLowerCase().Reversal: The sanitized text is reversed by converting it into an array with .split(""), reversing the array with .reverse(), and converting it back to a string using .join(""). Comparison: The function compares the sanitized text with its reversed version. If they are identical, it displays a success message stating the input is a palindrome; otherwise, it shows a failure message.Reset: The function clears the input field by setting document.getElementById("inputText").value to an empty string, preparing the form for the next input.`,
@@ -354,7 +359,9 @@ function resetGame() {
 
   &lt;script src="script.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
-&lt;/html&gt;                `,
+&lt;/html&gt;                
+
+`,
           javascript: `
 // Function to check if a string is a palindrome
 function generateFibonacci() {
@@ -371,9 +378,13 @@ function generateFibonacci() {
       fibonacci.push(fibonacci[i - 1] + fibonacci[i - 2]);
     }
 
-    outputDiv.textContent = `Fibonacci Sequence: ${fibonacci.slice(0, count).join(", ")}`;
-  }                `,
+    outputDiv.textContent = outputDiv.textContent = "Fibonacci Sequence (first " + count + " terms): " + fibonacci.slice(0, count).join(", ");
+  }               
+  
+  `,
         },
+
+        
 
         calculator: {
           description: `The Below JavaScript functions provide functionality to append numbers or operators, clear the display, delete the last character, and calculate the result in a simple calculator interface. @param value - The value parameter in the appendToDisplay function represents the number or operator that you want to append to the display. It is the input that will be added to the current content of the display.`,
