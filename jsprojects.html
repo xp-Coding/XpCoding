@@ -548,7 +548,6 @@ function calculateResult() {
 `,
           javascript: `
 // Function to check if a string is a palindrome
-// Function to check if a string is a palindrome
 function generateFibonacci() {
     const count = document.getElementById("fibonacciCount").value;
     const outputDiv = document.getElementById("output");
@@ -569,6 +568,154 @@ function generateFibonacci() {
 `,
         },
 
+
+         ticTacToe: {
+          description: `This is a Tic Tac Toe game built using HTML, CSS, and JavaScript. It features a clean and responsive design with a dynamic game board, allowing two players to alternate turns as "X" and "O". The game checks for winners, draws, and provides real-time updates on the player's turn via the status display. A "Reset Game" button lets players restart the game at any time. The JavaScript logic includes event listeners for user interactions, functions to check winning combinations, and draw conditions, ensuring smooth gameplay. The gradient background and hover effects add a visually appealing touch to the interface.`,
+          html: `
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Tic Tac Toe&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(145deg, #f3c6f8, #e745f9);
+        }
+        #game-container {
+            text-align: center;
+        }
+        #board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 2px;
+        }
+        .cell {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4em;
+            background-color: rgba(255, 255, 255, 0);
+            border: 2px solid #0000002d;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .cell:hover {
+            background-color: #e0e0e0;
+        }
+        #status {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        #reset-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #reset-btn:hover {
+            background-color: #45a049;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="game-container"&gt;
+        &lt;div id="status"&gt;Player X's Turn&lt;/div&gt;
+        &lt;div id="board"&gt;&lt;/div&gt;
+        &lt;button id="reset-btn"&gt;Reset Game&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+`,
+          javascript: `
+const board = document.getElementById('board');
+const status = document.getElementById('status');
+const resetBtn = document.getElementById('reset-btn');
+let currentPlayer = 'X';
+let gameBoard = ['', '', '', '', '', '', '', '', ''];
+let gameActive = true;
+
+// Create board cells
+for (let i = 0; i < 9; i++) {
+    const cell = document.createElement('div');
+    cell.classList.add('cell');
+    cell.setAttribute('data-index', i);
+    cell.addEventListener('click', handleCellClick);
+    board.appendChild(cell);
+}
+
+function handleCellClick(e) {
+    const index = e.target.getAttribute('data-index');
+    
+    if (gameBoard[index] !== '' || !gameActive) return;
+
+    gameBoard[index] = currentPlayer;
+    e.target.textContent = currentPlayer;
+    
+    if (checkWinner()) {
+        status.textContent = `Player ${currentPlayer} Wins!`;
+        gameActive = false;
+        return;
+    }
+
+    if (checkDraw()) {
+        status.textContent = "It's a Draw!";
+        gameActive = false;
+        return;
+    }
+
+    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    status.textContent = `Player ${currentPlayer}'s Turn`;
+}
+
+function checkWinner() {
+    const winningCombos = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],  // Rows
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],  // Columns
+        [0, 4, 8], [2, 4, 6]  // Diagonals
+    ];
+
+    return winningCombos.some(combo => {
+        return combo.every(index => 
+            gameBoard[index] === currentPlayer
+        );
+    });
+}
+
+function checkDraw() {
+    return gameBoard.every(cell => cell !== '');
+}
+
+resetBtn.addEventListener('click', () => {
+    gameBoard = ['', '', '', '', '', '', '', '', ''];
+    gameActive = true;
+    currentPlayer = 'X';
+    status.textContent = "Player X's Turn";
+    
+    document.querySelectorAll('.cell').forEach(cell => {
+        cell.textContent = '';
+    });
+});               
+`,
+        },
+
+
+        
+        
+        
         
       };
 
