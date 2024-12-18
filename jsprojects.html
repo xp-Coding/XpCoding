@@ -666,7 +666,7 @@ function handleCellClick(e) {
     e.target.textContent = currentPlayer;
     
     if (checkWinner()) {
-        status.textContent = `Player ${currentPlayer} Wins!`;
+        status.textContent = 'Player ' + currentPlayer + ' Wins!';
         gameActive = false;
         return;
     }
@@ -678,7 +678,7 @@ function handleCellClick(e) {
     }
 
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-    status.textContent = `Player ${currentPlayer}'s Turn`;
+    status.textContent = 'Player ' + currentPlayer + "'s Turn";
 }
 
 function checkWinner() {
@@ -708,8 +708,7 @@ resetBtn.addEventListener('click', () => {
     document.querySelectorAll('.cell').forEach(cell => {
         cell.textContent = '';
     });
-});               
-`,
+});`,
         },
 
 
