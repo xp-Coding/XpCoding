@@ -710,72 +710,131 @@ resetBtn.addEventListener('click', () => {
     });
 });`,
 
-           oddEven: {
+           passwordgenerator: {
           description:
             "This project is a beginner-friendly web application designed to determine whether a number or a list of numbers is odd or even. It features a user-friendly interface where users can enter single numbers or comma-separated lists of numbers into an input field. Upon clicking the 'Check Odd or Even' button, the application evaluates the input and displays the results, identifying each number as either odd or even.",
           html: `
 &lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
-&lt;meta charset="UTF-8"&gt;
-&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-&lt;title&gt;Odd or Even Checker&lt;/title&gt;
-&lt;style&gt;
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    text-align: center;
-}
-input {
-    padding: 10px;
-    width: 300px;
-    margin-bottom: 10px;
-}
-button {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-button:hover {
-    background-color: #0056b3;
-}
-.output {
-    margin-top: 20px;
-    text-align: left;
-    display: inline-block;
-}
-&lt;/style&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Password Generator&lt;/title&gt;
+  &lt;style&gt;
+    body {
+      font-family: Arial, sans-serif;
+      margin: 50px;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #password {
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      word-break: break-all;
+      background: #eaeaea;
+      border-radius: 4px;
+    }
+  &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;h1&gt;Odd or Even Checker&lt;/h1&gt;
-&lt;p&gt;Enter a number or a comma-separated list of numbers:&lt;/p&gt;
-&lt;input type="text" id="numberInput" placeholder="e.g., 2, 3, 5, 8"&gt;
-&lt;br&gt;
-&lt;button onclick="checkNumber()"&gt;Check Odd or Even&lt;/button&gt;
-&lt;br&gt;
-&lt;div class="output" id="result"&gt;&lt;/div&gt;
-&lt;script src="script.js"&gt;&lt;/script&gt;
+  &lt;div class="container"&gt;
+    &lt;h2&gt;Password Generator&lt;/h2&gt;
+    &lt;label for="length"&gt;Password Length&lt;/label&gt;
+    &lt;input type="number" id="length" placeholder="Enter length (e.g., 8-128)" min="8" max="128"&gt;
+    
+    &lt;label&gt;&lt;input type="checkbox" id="includeLowercase"&gt; Include Lowercase Letters&lt;/label&gt;
+    &lt;label&gt;&lt;input type="checkbox" id="includeUppercase"&gt; Include Uppercase Letters&lt;/label&gt;
+    &lt;label&gt;&lt;input type="checkbox" id="includeNumbers"&gt; Include Numbers&lt;/label&gt;
+    &lt;label&gt;&lt;input type="checkbox" id="includeSymbols"&gt; Include Symbols&lt;/label&gt;
+
+    &lt;button id="generateBtn"&gt;Generate Password&lt;/button&gt;
+
+    &lt;div id="password"&gt;Your password will appear here.&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script src="script.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 
-
                 `,
           javascript: `
-function checkNumber() {
-    const number = document.getElementById('numberInput').value;
-    const resultElement = document.getElementById('result');    
-    if (!number) {
-        resultElement.textContent = 'Enter a valid number';
-    } else if(number % 2 === 0){
-        resultElement.textContent = number + ' is an Even number';
-    }
-     else {
-        resultElement.textContent = number + ' is an Odd number';
-    }
-}
-                `,
+ // JavaScript for Password Generator
+ const generateBtn = document.getElementById("generateBtn");
+ const passwordDisplay = document.getElementById("password");
+
+ generateBtn.addEventListener("click", () => {
+   const length = document.getElementById("length").value;
+   const includeLowercase = document.getElementById("includeLowercase").checked;
+   const includeUppercase = document.getElementById("includeUppercase").checked;
+   const includeNumbers = document.getElementById("includeNumbers").checked;
+   const includeSymbols = document.getElementById("includeSymbols").checked;
+
+   const password = generatePassword(length, includeLowercase, includeUppercase, includeNumbers, includeSymbols);
+   passwordDisplay.textContent = password || "Invalid options! Please try again.";
+ });
+
+ function generatePassword(length, includeLowercase, includeUppercase, includeNumbers, includeSymbols) {
+   const lowercase = "abcdefghijklmnopqrstuvwxyz";
+   const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+   const numbers = "0123456789";
+   const symbols = "!@#$%^&*()_+[]{}|;:',.<>?/";
+
+   let characterPool = "";
+   if (includeLowercase) characterPool += lowercase;
+   if (includeUppercase) characterPool += uppercase;
+   if (includeNumbers) characterPool += numbers;
+   if (includeSymbols) characterPool += symbols;
+
+   if (!characterPool || length < 8 || length > 128) {
+     return null;
+   }
+
+   let password = "";
+   for (let i = 0; i < length; i++) {
+     const randomIndex = Math.floor(Math.random() * characterPool.length);
+     password += characterPool[randomIndex];
+   }
+   return password;
+ }                `,
         },
         },
 
