@@ -110,7 +110,7 @@
         <li data-project="ticTacToe">Tic-Tac-Toe Game</li>
         <li data-project="todoList">To-Do List App</li>
         <li data-project="weatherApp">Weather App with API</li>
-        <li data-project="sortingVisualizer">Sorting Visualizer</li>
+        <li data-project="passwordgenerator">Password Generator</li>
         <li data-project="expenseTracker">Expense Tracker</li>
       </ul>
     </div>
@@ -709,6 +709,74 @@ resetBtn.addEventListener('click', () => {
         cell.textContent = '';
     });
 });`,
+
+           oddEven: {
+          description:
+            "This project is a beginner-friendly web application designed to determine whether a number or a list of numbers is odd or even. It features a user-friendly interface where users can enter single numbers or comma-separated lists of numbers into an input field. Upon clicking the 'Check Odd or Even' button, the application evaluates the input and displays the results, identifying each number as either odd or even.",
+          html: `
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;title&gt;Odd or Even Checker&lt;/title&gt;
+&lt;style&gt;
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    text-align: center;
+}
+input {
+    padding: 10px;
+    width: 300px;
+    margin-bottom: 10px;
+}
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
+.output {
+    margin-top: 20px;
+    text-align: left;
+    display: inline-block;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Odd or Even Checker&lt;/h1&gt;
+&lt;p&gt;Enter a number or a comma-separated list of numbers:&lt;/p&gt;
+&lt;input type="text" id="numberInput" placeholder="e.g., 2, 3, 5, 8"&gt;
+&lt;br&gt;
+&lt;button onclick="checkNumber()"&gt;Check Odd or Even&lt;/button&gt;
+&lt;br&gt;
+&lt;div class="output" id="result"&gt;&lt;/div&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+                `,
+          javascript: `
+function checkNumber() {
+    const number = document.getElementById('numberInput').value;
+    const resultElement = document.getElementById('result');    
+    if (!number) {
+        resultElement.textContent = 'Enter a valid number';
+    } else if(number % 2 === 0){
+        resultElement.textContent = number + ' is an Even number';
+    }
+     else {
+        resultElement.textContent = number + ' is an Odd number';
+    }
+}
+                `,
+        },
         },
 
 
