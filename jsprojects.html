@@ -108,10 +108,9 @@
         <li data-project="calculator">Simple Calculator</li>
         <li data-project="fibonacci">Fibonacci Sequence Generator</li>
         <li data-project="ticTacToe">Tic-Tac-Toe Game</li>
-        <li data-project="todoList">To-Do List App</li>
-        <li data-project="weatherApp">Weather App with API</li>
-        <li data-project="passwordgenerator">Password Generator</li>
-        <li data-project="expenseTracker">Expense Tracker</li>
+        <!-- <li data-project="todoList">To-Do List App</li> -->
+        <!-- <li data-project="weatherApp">Weather App with API</li> -->
+        <li data-project="passwordGenerator">Password Generator</li>
       </ul>
     </div>
     <div class="main-content" id="mainContent">
@@ -286,9 +285,6 @@ function resetGame() {
 `,
         },
 
-
-      
-
         palindrome: {
           description: `Input Validation: The function retrieves the value of the input field using document.getElementById("inputText").value. It checks if the input is empty or contains only spaces, and if so, displays an error message in the messageDiv and exits the function. Sanitization: The input text is sanitized by removing spaces and special characters using a regular expression (/[^a-zA-Z0-9]/g) and converting the result to lowercase with .toLowerCase().Reversal: The sanitized text is reversed by converting it into an array with .split(""), reversing the array with .reverse(), and converting it back to a string using .join(""). Comparison: The function compares the sanitized text with its reversed version. If they are identical, it displays a success message stating the input is a palindrome; otherwise, it shows a failure message.Reset: The function clears the input field by setting document.getElementById("inputText").value to an empty string, preparing the form for the next input.`,
           html: `
@@ -368,8 +364,6 @@ function checkPalindrome() {
 }
   `,
         },
-
-        
 
         calculator: {
           description: `The Below JavaScript functions provide functionality to append numbers or operators, clear the display, delete the last character, and calculate the result in a simple calculator interface. @param value - The value parameter in the appendToDisplay function represents the number or operator that you want to append to the display. It is the input that will be added to the current content of the display.`,
@@ -471,8 +465,6 @@ function calculateResult() {
 }                `,
         },
 
-
-
         fibonacci: {
           description: `The Below JavaScript functions provide functionality to append numbers or operators, clear the display, delete the last character, and calculate the result in a simple calculator interface. @param value - The value parameter in the appendToDisplay function represents the number or operator that you want to append to the display. It is the input that will be added to the current content of the display.`,
           html: `
@@ -568,8 +560,7 @@ function generateFibonacci() {
 `,
         },
 
-
-         ticTacToe: {
+        ticTacToe: {
           description: `This is a Tic Tac Toe game built using HTML, CSS, and JavaScript. It features a clean and responsive design with a dynamic game board, allowing two players to alternate turns as "X" and "O". The game checks for winners, draws, and provides real-time updates on the player's turn via the status display. A "Reset Game" button lets players restart the game at any time. The JavaScript logic includes event listeners for user interactions, functions to check winning combinations, and draw conditions, ensuring smooth gameplay. The gradient background and hover effects add a visually appealing touch to the interface.`,
           html: `
 &lt;!DOCTYPE html&gt;
@@ -709,10 +700,11 @@ resetBtn.addEventListener('click', () => {
         cell.textContent = '';
     });
 });`,
+},
 
-           passwordgenerator: {
-          description:
-            "This project is a beginner-friendly web application designed to determine whether a number or a list of numbers is odd or even. It features a user-friendly interface where users can enter single numbers or comma-separated lists of numbers into an input field. Upon clicking the 'Check Odd or Even' button, the application evaluates the input and displays the results, identifying each number as either odd or even.",
+
+passwordGenerator: {
+          description: `This is a Password Generator application built with HTML, CSS, and JavaScript. The user selects options for password length and character types (lowercase, uppercase, numbers, symbols). The JavaScript code dynamically generates a random password based on the selected criteria. It ensures a secure, customizable password between 8-128 characters.`,
           html: `
 &lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
@@ -794,8 +786,7 @@ resetBtn.addEventListener('click', () => {
   &lt;script src="script.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-
-                `,
+`,
           javascript: `
  // JavaScript for Password Generator
  const generateBtn = document.getElementById("generateBtn");
@@ -834,16 +825,15 @@ resetBtn.addEventListener('click', () => {
      password += characterPool[randomIndex];
    }
    return password;
- }                `,
-        },
-        },
+ }`,
+},
 
 
-        
-        
-        
-        
       };
+
+
+
+
 
       function createCopyButton(codeBlock) {
         const copyBtn = document.createElement("button");
